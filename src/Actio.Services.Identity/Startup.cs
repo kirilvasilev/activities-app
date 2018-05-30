@@ -24,6 +24,8 @@ namespace Actio.Services.Identity
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddRabbitMq(Configuration);
+            services.AddScoped<ICommandHandler<CreateActivity>,  ActivityCreatedHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
